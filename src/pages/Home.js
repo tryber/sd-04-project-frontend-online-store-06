@@ -21,7 +21,7 @@ class Home extends Component {
   render() {
     const { categories } = this.state;
     return (
-      <>
+      <div>
         <div data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma categoria.
         </div>
@@ -30,7 +30,7 @@ class Home extends Component {
             <Categorie key={categorie.id} categorie={categorie} />
           ))}
         </div>
-      </>
+      </div>
     );
   }
 }
