@@ -5,16 +5,12 @@ import Categorie from '../components/Categorie';
 class Home extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      categories: [],
-    };
+    this.state = { categories: [] };
   }
 
   componentDidMount() {
     api.getCategories().then((categories) => {
-      this.setState({
-        categories,
-      });
+      this.setState({ categories });
     });
   }
 
