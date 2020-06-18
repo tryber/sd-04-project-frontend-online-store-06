@@ -9,12 +9,12 @@ class InputSearch extends Component {
       renderSearch: false,
       textSearch: '',
       resultProducts: [],
-    }
+    };
 
     this.onChangeText = this.onChangeText.bind(this);
     this.onSearchProduct = this.onSearchProduct.bind(this);
   }
-  
+
   onChangeText(event) {
     const { value } = event.target;
     console.log(value);
@@ -23,17 +23,30 @@ class InputSearch extends Component {
 
   onSearchProduct() {
     const { textSearch } = this.state;
-    api.getProductsFromCategoryAndQuery('', textSearch).then((response) => { // pegar só os dados do response
-      this.setState({resultProducts: response.results, renderSearch: true }); // aramazena no meu state
-    })
+    api.getProductsFromCategoryAndQuery('', textSearch).then((response) => {
+      // pegar só os dados do response
+      this.setState({ resultProducts: response.results, renderSearch: true }); // aramazena no meu state
+    });
   }
 
   render() {
     const { textSearch, resultProducts, renderSearch } = this.state;
     return (
       <div>
-        <input data-testid="query-input" value={textSearch} onChange={this.onChangeText} />
-        <button data-testid="query-button" onClick={() => {this.onSearchProduct();}}>Pequisar Produto</button>
+        <input
+          data-testid="query-input"
+          value={textSearch}
+          onChange={this.onChangeText}
+        />
+        <button
+          type="button"
+          data-testid="query-button"
+          onClick={() => {
+            this.onSearchProduct();
+          }}
+        >
+          Pequisar Produto
+        </button>
         {renderSearch ? <ProductList products={resultProducts} /> : ''}
       </div>
     );
