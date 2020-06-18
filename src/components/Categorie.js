@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 
 class Categorie extends Component {
   render() {
-    const { categorie } = this.props;
+    const { categorie, onClick } = this.props;
+    const { id, name } = categorie;
+
     return (
       <div data-testid="category">
-        <h4>{categorie.name}</h4>
+        <h4 id={id} onClick={(event) => { onClick(event) }}>{name}</h4>
       </div>
     );
   }

@@ -8,12 +8,43 @@ import * as api from '../services/api';
 class Home extends Component {
   constructor(props) {
     super(props);
-    this.state = { categories: [] };
+    this.state = {
+      categories: [],
+      categoryId: '',
+      renderSearch: false, // trouxe do InputSearch, p/ centralizar
+      textSearch: '',
+      resultProducts: [],
+    };
+
+    this.onChangeText = this.onChangeText.bind(this);
+    this.onSearchProduct = this.onSearchProduct.bind(this);
+    this.getCategory = this.getCategory.bind(this);
   }
 
   componentDidMount() {
     api.getCategories().then((categories) => {
       this.setState({ categories });
+    });
+  }
+
+  async getCategory(event) {
+    const { id } = event.target;
+    console.log(id);
+    await this.setState({ categoryId: id }); // não esparava setar
+    this.onSearchProduct(); // chama requisição
+  }
+
+  onChangeText(event) {
+    const { value } = event.target;
+    this.setState({ textSearch: value });
+  }
+
+  onSearchProduct() {
+    const { categoryId, textSearch } = this.state;
+    console.log(categoryId);
+    api.getProductsFromCategoryAndQuery(categoryId, textSearch).then((response) => {
+      // pegar só os dados do response
+      this.setState({ resultProducts: response.results, renderSearch: true }); // aramazena no meu state
     });
   }
 
@@ -29,10 +60,10 @@ class Home extends Component {
         </Link>
         <div>
           {categories.map((categorie) => (
-            <Categorie key={categorie.id} categorie={categorie} />
+            <Categorie key={categorie.id} onClick={this.getCategory} categorie={categorie} />
           ))}
         </div>
-        <InputSearch />
+        <InputSearch state={this.state} onSearchProduct={this.onSearchProduct} onChangeText={this.onChangeText} />
       </div>
     );
   }
