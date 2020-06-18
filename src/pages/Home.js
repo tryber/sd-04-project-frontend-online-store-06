@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import ShoppingCartBtn from '../components/ShoppingCartBtn';
 import Categorie from '../components/Categorie';
+import InputSearch from '../components/InputSearch';
 import * as api from '../services/api';
 
 class Home extends Component {
@@ -31,6 +32,7 @@ class Home extends Component {
             <Categorie key={categorie.id} categorie={categorie} />
           ))}
         </div>
+        <InputSearch />
       </div>
     );
   }
