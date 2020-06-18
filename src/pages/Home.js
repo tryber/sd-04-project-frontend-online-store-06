@@ -27,13 +27,6 @@ class Home extends Component {
     });
   }
 
-  async getCategory(event) {
-    const { id } = event.target;
-    console.log(id);
-    await this.setState({ categoryId: id }); // não esparava setar
-    this.onSearchProduct(); // chama requisição
-  }
-
   onChangeText(event) {
     const { value } = event.target;
     this.setState({ textSearch: value });
@@ -48,6 +41,12 @@ class Home extends Component {
     });
   }
 
+  async getCategory(event) {
+    const { id } = event.target;
+    console.log(id);
+    await this.setState({ categoryId: id }); // não esparava setar
+    this.onSearchProduct(); // chama requisição
+  }
   render() {
     const { categories } = this.state;
     return (

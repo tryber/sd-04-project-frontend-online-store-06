@@ -7,7 +7,7 @@ class Categorie extends Component {
 
     return (
       <div data-testid="category">
-        <h4 id={id} onClick={(event) => { onClick(event) }}>{name}</h4>
+        <a id={id} onClick={(event) => { onClick(event) }}>{name}</a>
       </div>
     );
   }
