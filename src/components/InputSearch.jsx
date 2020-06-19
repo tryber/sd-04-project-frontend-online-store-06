@@ -17,7 +17,6 @@ class InputSearch extends Component {
 
   onChangeText(event) {
     const { value } = event.target;
-    console.log(value);
     this.setState({ textSearch: value });
   }
 
@@ -47,7 +46,11 @@ class InputSearch extends Component {
         >
           Pequisar Produto
         </button>
-        {renderSearch ? <ProductList products={resultProducts} /> : ''}
+        {renderSearch ? (
+          <ProductList products={resultProducts} query={textSearch} />
+        ) : (
+          ''
+        )}
       </div>
     );
   }

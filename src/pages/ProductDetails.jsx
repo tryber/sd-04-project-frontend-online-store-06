@@ -1,29 +1,35 @@
 import React, { Component } from 'react';
 
 export class ProductDetails extends Component {
-  // constructor(props) {
-  //   super(props);
-
-  //   this.getProductDetails = this.getProductDetails.bind(this);
-  // }
+  constructor(props) {
+    super(props);
+    this.state = { productFetch: {} };
+  }
 
   static async getProductDetails(itemId) {
     const product = await fetch(`https://api.mercadolibre.com/items/${itemId}`);
     return product.json();
   }
 
-  render() {
-    const { location } = this.props;
-    const { productId, product } = location;
+  componentDidMount() {
     const currentUrlId = window.location.href.split('/')[
       window.location.href.split('/').length - 1
     ];
-    const productToRender =
-      productId !== undefined ? product : this.getProductDetails(currentUrlId);
-    console.log(productToRender);
+    ProductDetails.getProductDetails(currentUrlId).then((data) =>
+      this.setState({ productFetch: data })
+    );
+  }
+
+  render() {
+    const { location } = this.props;
+    const { productId, product } = location;
+    const { productFetch } = this.state;
+
+    const productToRender = productId !== undefined ? product : productFetch;
     return (
       <div>
         <h1>Product Details</h1>
+        <h3 data-testid="product-detail-name">{productToRender.title}</h3>
       </div>
     );
   }
