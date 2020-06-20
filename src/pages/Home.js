@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import ShoppingCartBtn from '../components/ShoppingCartBtn';
-import Categorie from '../components/Categorie';
+import Categorie from '../components/Category';
 import InputSearch from '../components/InputSearch';
 import * as api from '../services/api';
 
@@ -27,17 +27,16 @@ class Home extends Component {
     });
   }
 
-  componentDidUpdate() {
-
-  }
+  componentDidUpdate() {}
 
   onSearchProduct() {
     const { categoryId, textSearch } = this.state;
-    api.getProductsFromCategoryAndQuery(categoryId, textSearch).then((response) => {
-      // pegar só os dados do response
-      this.setState({ resultProducts: response.results, renderSearch: true }); // aramazena no meu state
-    });
-
+    api
+      .getProductsFromCategoryAndQuery(categoryId, textSearch)
+      .then((response) => {
+        // pegar só os dados do response
+        this.setState({ resultProducts: response.results, renderSearch: true }); // aramazena no meu state
+      });
   }
 
   onChangeText(event) {
@@ -46,7 +45,7 @@ class Home extends Component {
   }
 
   async getCategory(event) {
-    console.log("passou aqui");
+    console.log('passou aqui');
     const { id } = event.target;
     await this.setState({ categoryId: id });
     this.onSearchProduct(); // chama requisição
@@ -64,11 +63,19 @@ class Home extends Component {
         </Link>
         <div>
           {categories.map((categorie) => (
-            <Categorie key={categorie.id} onClick={this.getCategory} categorie={categorie} />
+            <Categorie
+              key={categorie.id}
+              onClick={this.getCategory}
+              categorie={categorie}
+            />
           ))}
         </div>
-        <InputSearch state={this.state} onSearchProduct={this.onSearchProduct} onChangeText={this.onChangeText} />
-      </div >
+        <InputSearch
+          state={this.state}
+          onSearchProduct={this.onSearchProduct}
+          onChangeText={this.onChangeText}
+        />
+      </div>
     );
   }
 }
