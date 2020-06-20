@@ -27,9 +27,9 @@ class Home extends Component {
     });
   }
 
-  componentDidUpdate() {
+  // componentDidUpdate() {
 
-  }
+  // }
 
   onSearchProduct() {
     const { categoryId, textSearch } = this.state;

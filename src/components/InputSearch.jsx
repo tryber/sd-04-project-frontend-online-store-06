@@ -19,7 +19,7 @@ class InputSearch extends Component {
             onSearchProduct();
           }}
         >
-          Pequisar Produto{' '}
+          Pesquisar Produto{' '}
         </button>
         {renderSearch ? <ProductList products={resultProducts} /> : ''}
       </div>
