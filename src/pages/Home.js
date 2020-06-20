@@ -27,11 +27,6 @@ class Home extends Component {
     });
   }
 
-  onChangeText(event) {
-    const { value } = event.target;
-    this.setState({ textSearch: value });
-  }
-
   onSearchProduct() {
     const { categoryId, textSearch } = this.state;
     api.getProductsFromCategoryAndQuery(categoryId, textSearch).then((response) => {
@@ -42,6 +37,11 @@ class Home extends Component {
   }
   componentDidUpdate() {
 
+  }
+
+  onChangeText(event) {
+    const { value } = event.target;
+    this.setState({ textSearch: value });
   }
 
   async getCategory(event) {
