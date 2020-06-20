@@ -2,10 +2,13 @@ import React, { Component } from 'react';
 
 class Categorie extends Component {
   render() {
-    const { categorie } = this.props;
+    const { categorie, onClick } = this.props;
+    const { id, name } = categorie;
+
     return (
-      <div data-testid="category">
-        <h4>{categorie.name}</h4>
+      <div>
+        <input data-testid="category" type="radio" name="category" id={id} onClick={(event) => { onClick(event) }} />
+        <label htmlFor={id}>{name}</label>
       </div>
     );
   }
