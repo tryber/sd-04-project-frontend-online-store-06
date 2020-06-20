@@ -3,7 +3,7 @@ import ProductCard from './ProductCard';
 
 class ProductList extends Component {
   render() {
-    const { products, query } = this.props;
+    const { products } = this.props;
 
     if (products.length === 0) {
       return <div>Nenhum produto foi encontrado</div>;
@@ -12,7 +12,7 @@ class ProductList extends Component {
       <div>
         {/* percorrendo products e passando um por um como parametro para ProductCard */}
         {products.map((product) => (
-          <ProductCard key={product.id} product={product} query={query} />
+          <ProductCard key={product.id} product={product} />
         ))}
       </div>
     );
