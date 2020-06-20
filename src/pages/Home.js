@@ -27,15 +27,16 @@ class Home extends Component {
     });
   }
 
+  componentDidUpdate() {
+
+  }
+
   onSearchProduct() {
     const { categoryId, textSearch } = this.state;
     api.getProductsFromCategoryAndQuery(categoryId, textSearch).then((response) => {
       // pegar só os dados do response
       this.setState({ resultProducts: response.results, renderSearch: true }); // aramazena no meu state
     });
-
-  }
-  componentDidUpdate() {
 
   }
 
