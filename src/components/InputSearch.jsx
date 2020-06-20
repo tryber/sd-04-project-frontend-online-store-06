@@ -13,6 +13,7 @@ class InputSearch extends Component {
           onChange={onChangeText}
         />
         <button
+          type="button"
           data-testid="query-button"
           onClick={() => {
             onSearchProduct();
