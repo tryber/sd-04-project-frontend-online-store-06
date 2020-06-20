@@ -34,19 +34,23 @@ class Home extends Component {
 
   onSearchProduct() {
     const { categoryId, textSearch } = this.state;
-    console.log(categoryId);
     api.getProductsFromCategoryAndQuery(categoryId, textSearch).then((response) => {
       // pegar só os dados do response
       this.setState({ resultProducts: response.results, renderSearch: true }); // aramazena no meu state
     });
+
+  }
+  componentDidUpdate() {
+
   }
 
   async getCategory(event) {
+    console.log("passou aqui");
     const { id } = event.target;
-    console.log(id);
-    await this.setState({ categoryId: id }); // não esparava setar
+    await this.setState({ categoryId: id });
     this.onSearchProduct(); // chama requisição
   }
+
   render() {
     const { categories } = this.state;
     return (
@@ -63,7 +67,7 @@ class Home extends Component {
           ))}
         </div>
         <InputSearch state={this.state} onSearchProduct={this.onSearchProduct} onChangeText={this.onChangeText} />
-      </div>
+      </div >
     );
   }
 }

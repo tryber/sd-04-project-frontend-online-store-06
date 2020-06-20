@@ -6,8 +6,8 @@ class Categorie extends Component {
     const { id, name } = categorie;
 
     return (
-      <div data-testid="category">
-        <input type="radio" name="category" id={id} onClick={(event) => { onClick(event) }} />
+      <div>
+        <input data-testid="category" type="radio" name="category" id={id} onClick={(event) => { onClick(event) }} />
         <label htmlFor={id}>{name}</label>
       </div>
     );
