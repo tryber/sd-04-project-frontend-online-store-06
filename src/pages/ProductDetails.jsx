@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 
 export class ProductDetails extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { productFetch: {} };
-  }
-
   static async getProductDetails(itemId) {
     const product = await fetch(`https://api.mercadolibre.com/items/${itemId}`);
     return product.json();
+  }
+
+  constructor(props) {
+    super(props);
+    this.state = { productFetch: {} };
   }
 
   componentDidMount() {
