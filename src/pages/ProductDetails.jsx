@@ -21,8 +21,6 @@ export class ProductDetails extends Component {
     );
   }
 
-  async getProductToRender() {}
-
   render() {
     const { productFetch, loading } = this.state;
     return loading === true ? (
