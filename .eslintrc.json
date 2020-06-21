@@ -17,8 +17,7 @@
         "multiline": true
       }
     ],
-    "arrow-parens": [2, "always"],
-    "prettier/prettier": "error"
+    "arrow-parens": [2, "always"]
   },
   "env": {
     "browser": true,
