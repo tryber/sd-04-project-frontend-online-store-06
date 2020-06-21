@@ -14,21 +14,19 @@ class ProductCard extends Component {
           }}
           data-testid="product-detail-link"
         >
-          <h1 // data-testid="product-add-to-cart"
-          >{title}</h1>
+          <h1>{title}</h1>
           <img
             src={thumbnail}
             title={title}
             alt={title}
-            // data-testid="product-add-to-cart"
           />
         </Link>
         <p>{price}</p>
         <button
-        type="button"
-        data-testid="product-add-to-cart" 
-        onClick={() => {addProduct(product);}}>
-        Adicionar ao Carrinho
+          type="button"
+          data-testid="product-add-to-cart" 
+          onClick={() => {addProduct(product)}}>
+          Adicionar ao Carrinho
         </button>
       </div>
     );

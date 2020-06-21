@@ -3,7 +3,7 @@ import ProductList from './ProductList';
 
 class InputSearch extends Component {
   render() {
-    const { onChangeText, state, onSearchProduct } = this.props;
+    const { onChangeText, state, onSearchProduct, addProduct } = this.props;
     const { textSearch, resultProducts, renderSearch } = state;
     return (
       <div>
@@ -21,7 +21,7 @@ class InputSearch extends Component {
         >
           Pesquisar Produto{' '}
         </button>
-        {renderSearch ? <ProductList products={resultProducts} /> : ''}
+        {renderSearch ? <ProductList products={resultProducts} addProduct={addProduct} /> : ''}
       </div>
     );
   }
