@@ -27,9 +27,9 @@ class Home extends Component {
     });
   }
 
-  componentDidUpdate() {
+  // componentDidUpdate() {
 
-  }
+  // }
 
   onSearchProduct() {
     const { categoryId, textSearch } = this.state;
@@ -54,6 +54,7 @@ class Home extends Component {
 
   render() {
     const { categories } = this.state;
+    const { addProduct } = this.props;
     return (
       <div>
         <div data-testid="home-initial-message">
@@ -67,7 +68,7 @@ class Home extends Component {
             <Categorie key={categorie.id} onClick={this.getCategory} categorie={categorie} />
           ))}
         </div>
-        <InputSearch state={this.state} onSearchProduct={this.onSearchProduct} onChangeText={this.onChangeText} />
+        <InputSearch state={this.state} onSearchProduct={this.onSearchProduct} onChangeText={this.onChangeText} addProduct={addProduct} />
       </div >
     );
   }
