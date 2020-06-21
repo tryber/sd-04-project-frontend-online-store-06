@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Loading from '../components/Loading';
+import ProductEvaluation from '../components/ProductEvaluation';
 
 export class ProductDetails extends Component {
   static async getProductDetails(itemId) {
@@ -38,6 +39,7 @@ export class ProductDetails extends Component {
             alt={`Imagem de ${productFetch.title}`}
           />
         ))}
+        <ProductEvaluation />
       </div>
     );
   }
