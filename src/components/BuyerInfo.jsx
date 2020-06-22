@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import states from '../services/brazilStates';
+
 class BuyerInfo extends Component {
   constructor(props) {
     super(props);
@@ -19,12 +21,15 @@ class BuyerInfo extends Component {
     };
 
     this.createInput = this.createInput.bind(this);
+    this.createOptions = this.createOptions.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(event) {
     const { id, value } = event.target;
-    this.setState({ [id]: value });
+    this.setState((state) => ({
+      buyerInfo: { ...state.buyerInfo, [id]: value },
+    }));
     console.log(this.state);
   }
 
@@ -44,6 +49,14 @@ class BuyerInfo extends Component {
     );
   }
 
+  createOptions(arr) {
+    return arr.map((item) => (
+      <option key={item} value={item}>
+        {item}
+      </option>
+    ));
+  }
+
   render() {
     return (
       <div>
@@ -61,7 +74,9 @@ class BuyerInfo extends Component {
         {this.createInput('Complemento', 'text', 'complement')}
         {this.createInput('Número', 'text', 'number')}
         {this.createInput('Cidade', 'text', 'city')}
-        {this.createInput('Estado', 'text', 'state')}
+        <select id="state" onChange={this.handleChange}>
+          {this.createOptions(states)}
+        </select>
       </div>
     );
   }
