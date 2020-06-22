@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import ShoppingCartBtn from '../components/ShoppingCartBtn';
 import Category from '../components/Category';
 import InputSearch from '../components/InputSearch';
+import BuyerInfo from '../components/BuyerInfo';
 import * as api from '../services/api';
 
 class Home extends Component {
@@ -75,6 +76,7 @@ class Home extends Component {
           onChangeText={this.onChangeText}
           addProduct={addProduct}
         />
+        <BuyerInfo />
       </div>
     );
   }

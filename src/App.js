@@ -13,7 +13,8 @@ class App extends Component {
     this.addProduct = this.addProduct.bind(this);
   }
 
-  addProduct(product, qtd = 1) { // params default
+  addProduct(product, qtd = 1) {
+    // params default
     const { carrinho } = this.state;
     const newProduct = { ...product, qtd }; // cria nova chave no objeto
     this.setState({ carrinho: [...carrinho, newProduct] });
@@ -28,7 +29,8 @@ class App extends Component {
           <Route
             exact
             path="/"
-            render={(props) => <Home {...props} addProduct={this.addProduct} />} />
+            render={(props) => <Home {...props} addProduct={this.addProduct} />}
+          />
           <Route
             exact
             path="/cart"
@@ -37,7 +39,10 @@ class App extends Component {
           <Route
             exact
             path="/details/:id"
-            render={(props) => <ProductDetails {...props} addProduct={this.addProduct} />} />
+            render={(props) => (
+              <ProductDetails {...props} addProduct={this.addProduct} />
+            )}
+          />
         </Switch>
       </Router>
     );
