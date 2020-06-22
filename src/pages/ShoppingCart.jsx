@@ -11,12 +11,14 @@ class ShoppingCart extends Component {
             Seu carrinho está vazio
           </h3>
         ) : (
-          carrinho.map((produto) =>
+          carrinho.map((produto) => (
             <div key={produto.id}>
               <h5 data-testid="shopping-cart-product-name">{produto.title}</h5>
-              <h6 data-testid="shopping-cart-product-quantity">{'1'}</h6>
+              <h6 data-testid="shopping-cart-product-quantity">
+                {produto.qtd}
+              </h6>
             </div>
-          )
+          ))
         )}
       </div>
     );

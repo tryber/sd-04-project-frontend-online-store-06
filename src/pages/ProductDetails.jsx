@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Loading from '../components/Loading';
+import ProductDetailAddCart from '../components/ProductDetailAddCart';
+import ShoppingCartBtn from '../components/ShoppingCartBtn';
 
 export class ProductDetails extends Component {
   static async getProductDetails(itemId) {
@@ -12,25 +15,30 @@ export class ProductDetails extends Component {
     this.state = { productFetch: {}, loading: true };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const currentUrlId = window.location.href.split('/')[
       window.location.href.split('/').length - 1
     ];
-    ProductDetails.getProductDetails(currentUrlId).then((data) =>
+    await ProductDetails.getProductDetails(currentUrlId).then((data) =>
       this.setState({ productFetch: data, loading: false })
     );
   }
 
   render() {
     const { productFetch, loading } = this.state;
+    const { addProduct } = this.props;
     return loading === true ? (
       <Loading />
     ) : (
       <div>
+        <Link to="/cart">
+          <ShoppingCartBtn />
+        </Link>
         <h1>Product Details</h1>
         <h3 data-testid="product-detail-name">{productFetch.title}</h3>
         <p>Quantidade vendida: {productFetch.sold_quantity}</p>
         <h3>Preço: R$ {productFetch.price}</h3>
+        <ProductDetailAddCart addProduct={addProduct} product={productFetch} />
         {productFetch.pictures.map((item) => (
           <img
             key={item.id}
