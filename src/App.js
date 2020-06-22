@@ -14,9 +14,9 @@ class App extends Component {
   }
 
   addProduct(product, qtd = 1) { // params default
-    const newProduct = { ...product, qtd }; //cria nova chave no objeto
+    const newProduct = { ...product, qtd }; // cria nova chave no objeto
     this.setState({ carrinho: [...this.state.carrinho, newProduct] });
-    // newProductk, tem agora também a quantidade
+    // newProduct, tem agora também a quantidade
   }
 
   render() {

@@ -3,9 +3,7 @@ import React, { Component } from 'react';
 class AddAndDecItemCard extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      qtdItem: 1,
-    };
+    this.state = { qtdItem: 1 };
 
     this.incrementValue = this.incrementValue.bind(this);
     this.decrementValue = this.decrementValue.bind(this);

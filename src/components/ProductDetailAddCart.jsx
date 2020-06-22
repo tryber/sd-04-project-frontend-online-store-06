@@ -11,10 +11,8 @@ class ProductDetailAddCart extends Component {
         <button
           data-testid="product-detail-add-to-cart"
           onClick={() => {
-            addProduct(
-              product,
-              parseInt(document.getElementById('result').value)
-            );
+            const qtdItem = parseInt(document.getElementById('result').value);
+            addProduct(product, parseInt(qtdItem));
           }}
         >
           Adicionar ao carrinho
