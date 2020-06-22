@@ -13,9 +13,11 @@ class App extends Component {
     this.addProduct = this.addProduct.bind(this);
   }
 
-  addProduct(product) {
+  addProduct(product, qtd = 1) { // params default
     const { carrinho } = this.state;
-    this.setState({ carrinho: [...carrinho, product] });
+    const newProduct = { ...product, qtd }; // cria nova chave no objeto
+    this.setState({ carrinho: [...carrinho, newProduct] });
+    // newProduct, tem agora também a quantidade
   }
 
   render() {
@@ -26,14 +28,16 @@ class App extends Component {
           <Route
             exact
             path="/"
-            render={(props) => <Home {...props} addProduct={this.addProduct} />}
-          />
+            render={(props) => <Home {...props} addProduct={this.addProduct} />} />
           <Route
             exact
             path="/cart"
             render={(props) => <ShoppingCart {...props} carrinho={carrinho} />}
           />
-          <Route exact path="/details/:id" component={ProductDetails} />
+          <Route
+            exact
+            path="/details/:id"
+            render={(props) => <ProductDetails {...props} addProduct={this.addProduct} />} />
         </Switch>
       </Router>
     );
