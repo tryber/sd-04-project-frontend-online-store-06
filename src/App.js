@@ -45,7 +45,7 @@ class App extends Component {
               <ProductDetails {...props} addProduct={this.addProduct} />
             )}
           />
-          <Route exact path="/checkout" component={Checkout} />
+          <Route exact path="/checkout" render={(props) => <Checkout {...props} carrinho={carrinho} />} />
         </Switch>
       </Router>
     );

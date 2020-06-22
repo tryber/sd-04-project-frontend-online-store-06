@@ -30,7 +30,7 @@ class BuyerInfo extends Component {
     this.setState((state) => ({
       buyerInfo: { ...state.buyerInfo, [id]: value },
     }));
-    console.log(this.state);
+    // console.log(this.state);
   }
 
   createInput(label, type, id, dataTestId) {
