@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import ShoppingCartBtn from '../components/ShoppingCartBtn';
-import Categorie from '../components/Category';
+import Category from '../components/Category';
 import InputSearch from '../components/InputSearch';
 import * as api from '../services/api';
 
@@ -61,11 +61,11 @@ class Home extends Component {
           <ShoppingCartBtn />
         </Link>
         <div>
-          {categories.map((categorie) => (
-            <Categorie
-              key={categorie.id}
+          {categories.map((category) => (
+            <Category
+              key={category.id}
               onClick={this.getCategory}
-              categorie={categorie}
+              category={category}
             />
           ))}
         </div>
