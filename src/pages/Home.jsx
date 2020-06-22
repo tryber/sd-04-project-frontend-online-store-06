@@ -43,7 +43,6 @@ class Home extends Component {
   }
 
   async getCategory(event) {
-    console.log('passou aqui');
     const { id } = event.target;
     await this.setState({ categoryId: id });
     this.onSearchProduct(); // chama requisição
