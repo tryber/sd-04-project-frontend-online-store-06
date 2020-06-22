@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Home from './pages/Home';
 import ShoppingCart from './pages/ShoppingCart';
 import ProductDetails from './pages/ProductDetails';
+import Checkout from './pages/Checkout';
 import './App.css';
-
-import Home from './pages/Home';
 
 class App extends Component {
   constructor(props) {
@@ -43,6 +43,7 @@ class App extends Component {
               <ProductDetails {...props} addProduct={this.addProduct} />
             )}
           />
+          <Route exact path="/checkout" component={Checkout} />
         </Switch>
       </Router>
     );
