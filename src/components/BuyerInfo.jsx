@@ -27,10 +27,7 @@ class BuyerInfo extends Component {
 
   handleChange(event) {
     const { id, value } = event.target;
-    this.setState((state) => ({
-      buyerInfo: { ...state.buyerInfo, [id]: value },
-    }));
-    // console.log(this.state);
+    this.setState((state) => ({ buyerInfo: { ...state.buyerInfo, [id]: value } }));
   }
 
   createInput(label, type, id, dataTestId) {
