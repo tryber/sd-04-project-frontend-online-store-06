@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-class Categorie extends Component {
+class Category extends Component {
   render() {
-    const { categorie, onClick } = this.props;
-    const { id, name } = categorie;
+    const { category, onClick } = this.props;
+    const { id, name } = category;
 
     return (
       <div>
@@ -22,4 +22,4 @@ class Categorie extends Component {
   }
 }
 
-export default Categorie;
+export default Category;

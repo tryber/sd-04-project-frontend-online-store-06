@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import ItemCart from '../components/ItemCart';
+
 class ShoppingCart extends Component {
   render() {
     const { carrinho } = this.props;
@@ -13,10 +15,7 @@ class ShoppingCart extends Component {
         ) : (
           carrinho.map((produto) => (
             <div key={produto.id}>
-              <h5 data-testid="shopping-cart-product-name">{produto.title}</h5>
-              <h6 data-testid="shopping-cart-product-quantity">
-                {produto.qtd}
-              </h6>
+              <ItemCart produto={produto}/>
             </div>
           ))
         )}
