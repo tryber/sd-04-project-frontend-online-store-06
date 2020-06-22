@@ -15,6 +15,8 @@ class App extends Component {
 
   addProduct(product, qtd = 1) { // params default
     const { carrinho } = this.state;
+    // const indexProduct = carrinho.indexOf(prod => prod.id === product.id);
+    // console.log(indexProduct);
     const newProduct = { ...product, qtd }; // cria nova chave no objeto
     this.setState({ carrinho: [...carrinho, newProduct] });
     // newProduct, tem agora também a quantidade
