@@ -17,7 +17,8 @@
         "multiline": true
       }
     ],
-    "arrow-parens": [2, "always"]
+    "arrow-parens": [2, "always"],
+    "import/no-named-as-default": 0
   },
   "env": {
     "browser": true,

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Loading from '../components/Loading';
 import ProductDetailAddCart from '../components/ProductDetailAddCart';
 import ShoppingCartBtn from '../components/ShoppingCartBtn';
+import ProductEvaluation from '../components/ProductEvaluation';
 
 export class ProductDetails extends Component {
   static async getProductDetails(itemId) {
@@ -46,6 +47,7 @@ export class ProductDetails extends Component {
             alt={`Imagem de ${productFetch.title}`}
           />
         ))}
+        <ProductEvaluation />
       </div>
     );
   }

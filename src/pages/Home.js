@@ -73,8 +73,9 @@ class Home extends Component {
           state={this.state}
           onSearchProduct={this.onSearchProduct}
           onChangeText={this.onChangeText}
-          addProduct={addProduct} />
-      </div >
+          addProduct={addProduct}
+        />
+      </div>
     );
   }
 }
