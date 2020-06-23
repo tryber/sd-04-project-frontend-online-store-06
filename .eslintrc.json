@@ -1,5 +1,5 @@
 {
-  "extends": ["airbnb", "prettier", "prettier/react"],
+  "extends": ["airbnb", "prettier/react", "prettier"],
   "plugins": ["prettier"],
   "rules": {
     "no-console": "off",
@@ -18,7 +18,9 @@
       }
     ],
     "arrow-parens": [2, "always"],
-    "import/no-named-as-default": 0
+    "import/no-named-as-default": 0,
+    "react/jsx-props-no-spreading": "off",
+    "class-methods-use-this": "off"
   },
   "env": {
     "browser": true,

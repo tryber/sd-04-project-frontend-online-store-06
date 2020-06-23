@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Home from './pages/Home';
 import ShoppingCart from './pages/ShoppingCart';
 import ProductDetails from './pages/ProductDetails';
+import Checkout from './pages/Checkout';
 import './App.css';
-
-import Home from './pages/Home';
 
 class App extends Component {
   constructor(props) {
@@ -13,8 +13,11 @@ class App extends Component {
     this.addProduct = this.addProduct.bind(this);
   }
 
-  addProduct(product, qtd = 1) { // params default
+  addProduct(product, qtd = 1) {
+    // params default
     const { carrinho } = this.state;
+    // const indexProduct = carrinho.indexOf(prod => prod.id === product.id);
+    // console.log(indexProduct);
     const newProduct = { ...product, qtd }; // cria nova chave no objeto
     this.setState({ carrinho: [...carrinho, newProduct] });
     // newProduct, tem agora também a quantidade
@@ -28,7 +31,8 @@ class App extends Component {
           <Route
             exact
             path="/"
-            render={(props) => <Home {...props} addProduct={this.addProduct} />} />
+            render={(props) => <Home {...props} addProduct={this.addProduct} />}
+          />
           <Route
             exact
             path="/cart"
@@ -37,7 +41,11 @@ class App extends Component {
           <Route
             exact
             path="/details/:id"
-            render={(props) => <ProductDetails {...props} addProduct={this.addProduct} />} />
+            render={(props) => (
+              <ProductDetails {...props} addProduct={this.addProduct} />
+            )}
+          />
+          <Route exact path="/checkout" render={(props) => <Checkout {...props} carrinho={carrinho} />} />
         </Switch>
       </Router>
     );
