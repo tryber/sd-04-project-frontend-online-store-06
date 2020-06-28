@@ -17,8 +17,7 @@ class AddAndDecItemCard extends Component {
   regraDecrementIncrement(qtdItem, isDisabled) {
     this.setState({ qtdItem, isDisabled }); // se diminui habilita para poder aumentar
     const { product, addProduct } = this.props;
-    const isCart = product.qtd ? true : false;
-    if (isCart) {
+    if (product.qtd) {
       // Esta regra será executado, só quando estiver na tela do carrinho
       // Regra  para atualizara qtd no card
       // O qtdItem é o total que se tem em tela

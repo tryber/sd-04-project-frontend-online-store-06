@@ -16,7 +16,7 @@ class App extends Component {
   addProduct(product, qtd = 1) {
     // params default
     const { carrinho } = this.state;
-    const indexProduct = carrinho.findIndex(prod => prod.id === product.id);
+    const indexProduct = carrinho.findIndex((prod) => prod.id === product.id);
     if (indexProduct === -1) { // Se findIndex não encontra traz -1
       const newProduct = { ...product, qtd }; // cria nova chave no objeto
       this.setState({ carrinho: [...carrinho, newProduct] });
