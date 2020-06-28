@@ -16,10 +16,15 @@ class App extends Component {
   addProduct(product, qtd = 1) {
     // params default
     const { carrinho } = this.state;
-    // const indexProduct = carrinho.indexOf(prod => prod.id === product.id);
-    // console.log(indexProduct);
-    const newProduct = { ...product, qtd }; // cria nova chave no objeto
-    this.setState({ carrinho: [...carrinho, newProduct] });
+    const indexProduct = carrinho.findIndex(prod => prod.id === product.id);
+    if (indexProduct === -1) { // Se findIndex não encontra traz -1
+      const newProduct = { ...product, qtd }; // cria nova chave no objeto
+      this.setState({ carrinho: [...carrinho, newProduct] });
+    }
+    else { // se index já existe
+      carrinho[indexProduct].qtd += qtd;
+      this.setState({ carrinho });
+    }
     // newProduct, tem agora também a quantidade
   }
 
@@ -36,7 +41,7 @@ class App extends Component {
           <Route
             exact
             path="/cart"
-            render={(props) => <ShoppingCart {...props} carrinho={carrinho} />}
+            render={(props) => <ShoppingCart {...props} addProduct={this.addProduct} carrinho={carrinho} />}
           />
           <Route
             exact

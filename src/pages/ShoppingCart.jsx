@@ -16,7 +16,7 @@ class ShoppingCart extends Component {
   }
 
   render() {
-    const { carrinho } = this.props;
+    const { carrinho, addProduct } = this.props;
     const { finalizar } = this.state;
 
     if (finalizar) return <Redirect to="/checkout" />;
@@ -31,7 +31,7 @@ class ShoppingCart extends Component {
         ) : (
           carrinho.map((produto) => (
             <div key={produto.id}>
-              <ItemCart produto={produto} />
+              <ItemCart addProduct={addProduct} produto={produto} />
             </div>
           ))
         )}
