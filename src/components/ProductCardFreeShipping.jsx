@@ -1,19 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import ProductCardFreeShipping from './ProductCardFreeShipping';
-
-class ProductCard extends Component {
+class ProductCardFreeShipping extends Component {
   render() {
     const { product, addProduct } = this.props;
-    const { title, thumbnail, price, shipping } = product;
-
-    if (shipping.free_shipping === true) {
-      return (
-        <ProductCardFreeShipping product={product} addProduct={addProduct} />
-      );
-    }
-
+    const { title, thumbnail, price } = product;
     return (
       <div data-testid="product">
         <Link
@@ -36,9 +27,10 @@ class ProductCard extends Component {
         >
           Adicionar ao Carrinho
         </button>
+        <div data-testid="free-shipping">FRETE GRÁTIS</div>
       </div>
     );
   }
 }
 
-export default ProductCard;
+export default ProductCardFreeShipping;
