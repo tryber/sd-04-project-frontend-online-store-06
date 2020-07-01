@@ -7,12 +7,12 @@ class ProductDetailAddCart extends Component {
     return (
       <div>
         <h1>Quantidade</h1>
-        <AddAndDecItemCard />
+        <AddAndDecItemCard product={product} />
         <button
           data-testid="product-detail-add-to-cart"
           onClick={() => {
             const qtdItem = parseInt(
-              document.getElementById('result').value,
+              document.getElementById('result').innerText,
               10
             );
             addProduct(product, qtdItem);

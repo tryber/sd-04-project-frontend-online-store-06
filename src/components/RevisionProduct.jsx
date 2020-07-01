@@ -14,6 +14,7 @@ class RevisionProduct extends Component {
             <div key={id}>
               <img src={thumbnail} title={title} alt={title} />
               <p>{title}</p>
+              <p>{qtd}</p>
               <p>{price * qtd}</p>
             </div>
           );
