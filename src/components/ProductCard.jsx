@@ -1,41 +1,23 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-
-import ProductCardFreeShipping from './ProductCardFreeShipping';
+import ProductCardBase from './ProductCardBase';
 
 class ProductCard extends Component {
   render() {
     const { product, addProduct } = this.props;
-    const { title, thumbnail, price, shipping } = product;
+    const { shipping } = product;
 
     if (shipping.free_shipping === true) {
       return (
-        <ProductCardFreeShipping product={product} addProduct={addProduct} />
+        <div>
+          <ProductCardBase product={product} addProduct={addProduct} />
+          <div data-testid="free-shipping">FRETE GRÁTIS</div>
+        </div>
       );
     }
 
     return (
-      <div data-testid="product">
-        <Link
-          to={{
-            pathname: `/details/${product.id}`,
-            product,
-          }}
-          data-testid="product-detail-link"
-        >
-          <h1>{title}</h1>
-          <img src={thumbnail} title={title} alt={title} />
-        </Link>
-        <p>{price}</p>
-        <button
-          type="button"
-          data-testid="product-add-to-cart"
-          onClick={() => {
-            addProduct(product);
-          }}
-        >
-          Adicionar ao Carrinho
-        </button>
+      <div>
+        <ProductCardBase product={product} addProduct={addProduct} />
       </div>
     );
   }

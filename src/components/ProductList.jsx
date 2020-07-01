@@ -12,7 +12,11 @@ class ProductList extends Component {
       <div>
         {/* percorrendo products e passando um por um como parametro para ProductCard */}
         {products.map((product) => (
-          <ProductCard key={product.id} product={product} addProduct={addProduct} />
+          <ProductCard
+            key={product.id}
+            product={product}
+            addProduct={addProduct}
+          />
         ))}
       </div>
     );

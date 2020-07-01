@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-class ProductCardFreeShipping extends Component {
+class ProductCardBase extends Component {
   render() {
     const { product, addProduct } = this.props;
     const { title, thumbnail, price } = product;
+
     return (
       <div data-testid="product">
         <Link
@@ -27,10 +28,9 @@ class ProductCardFreeShipping extends Component {
         >
           Adicionar ao Carrinho
         </button>
-        <div data-testid="free-shipping">FRETE GRÁTIS</div>
       </div>
     );
   }
 }
 
-export default ProductCardFreeShipping;
+export default ProductCardBase;
