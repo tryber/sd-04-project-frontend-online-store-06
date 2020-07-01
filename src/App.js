@@ -9,7 +9,12 @@ import './App.css';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { carrinho: [] };
+    let carrinho = []; // para local storage
+    if (localStorage.getItem('cart') !== null) { // carrega do localStorage
+      // pegando texto e trasnformando em um Json válido
+      carrinho = JSON.parse(localStorage.getItem('cart'));
+    }
+    this.state = { carrinho };
     this.addProduct = this.addProduct.bind(this);
   }
 
@@ -20,11 +25,16 @@ class App extends Component {
     if (indexProduct === -1) { // Se findIndex não encontra traz -1
       const newProduct = { ...product, qtd }; // cria nova chave no objeto
       this.setState({ carrinho: [...carrinho, newProduct] });
+      // Guarda as informações do carrinho em modo texto
+      localStorage.setItem('cart', JSON.stringify([...carrinho, newProduct]));
     }
     else { // se index já existe
       carrinho[indexProduct].qtd += qtd;
       this.setState({ carrinho });
+      // Guarda nova quantidade no Storage
+      localStorage.setItem('cart', JSON.stringify(carrinho));
     }
+
     // newProduct, tem agora também a quantidade
   }
 
@@ -36,7 +46,7 @@ class App extends Component {
           <Route
             exact
             path="/"
-            render={(props) => <Home {...props} addProduct={this.addProduct} />}
+            render={(props) => <Home {...props} addProduct={this.addProduct} carrinho={carrinho} />}
           />
           <Route
             exact
@@ -47,7 +57,7 @@ class App extends Component {
             exact
             path="/details/:id"
             render={(props) => (
-              <ProductDetails {...props} addProduct={this.addProduct} />
+              <ProductDetails {...props} addProduct={this.addProduct} carrinho={carrinho} />
             )}
           />
           <Route exact path="/checkout" render={(props) => <Checkout {...props} carrinho={carrinho} />} />
