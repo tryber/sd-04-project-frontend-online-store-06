@@ -4,9 +4,10 @@ import shoppingCartIcon from '../img/shopping-cart-icon.svg';
 class ShoppingCartBtn extends Component {
   render() {
     const { carrinho } = this.props;
-    const totalQtdCart = carrinho.reduce((accumulator, product) => {
-      return accumulator + product.qtd;
-    }, 0);
+    const totalQtdCart = carrinho.reduce(
+      (accumulator, product) => accumulator + product.qtd,
+      0
+    );
     return (
       <div>
         <img
