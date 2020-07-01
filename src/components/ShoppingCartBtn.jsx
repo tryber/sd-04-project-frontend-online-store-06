@@ -5,8 +5,7 @@ class ShoppingCartBtn extends Component {
   render() {
     const { carrinho } = this.props;
     const totalQtdCart = carrinho.reduce((accumulator, product) => {
-      accumulator = accumulator + product.qtd;
-      return accumulator;
+      return accumulator + product.qtd;
     }, 0);
     return (
       <div>
