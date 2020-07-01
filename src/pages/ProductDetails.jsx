@@ -27,13 +27,19 @@ export class ProductDetails extends Component {
 
   render() {
     const { productFetch, loading } = this.state;
-    const { addProduct } = this.props;
+    const { addProduct, carrinho } = this.props;
     return loading === true ? (
-      <Loading />
+      // para passar no teste
+      <div>
+        <Link to="/cart">
+          <ShoppingCartBtn carrinho={carrinho} />
+        </Link>
+        <Loading />
+      </div>
     ) : (
       <div>
         <Link to="/cart">
-          <ShoppingCartBtn />
+          <ShoppingCartBtn carrinho={carrinho} />
         </Link>
         <h1>Product Details</h1>
         <h3 data-testid="product-detail-name">{productFetch.title}</h3>

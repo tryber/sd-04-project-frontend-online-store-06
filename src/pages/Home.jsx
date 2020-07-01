@@ -50,14 +50,14 @@ class Home extends Component {
 
   render() {
     const { categories } = this.state;
-    const { addProduct } = this.props;
+    const { addProduct, carrinho } = this.props;
     return (
       <div>
         <div data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma categoria.
         </div>
         <Link to="/cart">
-          <ShoppingCartBtn />
+          <ShoppingCartBtn carrinho={carrinho} />
         </Link>
         <div>
           {categories.map((category) => (

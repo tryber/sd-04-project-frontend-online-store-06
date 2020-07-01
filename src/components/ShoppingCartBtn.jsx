@@ -3,13 +3,21 @@ import shoppingCartIcon from '../img/shopping-cart-icon.svg';
 
 class ShoppingCartBtn extends Component {
   render() {
+    const { carrinho } = this.props;
+    const totalQtdCart = carrinho.reduce(
+      (accumulator, product) => accumulator + product.qtd,
+      0
+    );
     return (
-      <img
-        src={shoppingCartIcon}
-        alt="Shopping cart button"
-        className="shopping-cart-btn"
-        data-testid="shopping-cart-button"
-      />
+      <div>
+        <img
+          src={shoppingCartIcon}
+          alt="Shopping cart button"
+          className="shopping-cart-btn"
+          data-testid="shopping-cart-button"
+        />{' '}
+        <p data-testid="shopping-cart-size">{totalQtdCart}</p>
+      </div>
     );
   }
 }
